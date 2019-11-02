@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/index.ts",
-    "dev:watch": "ts-node-dev --respawn src/index.ts"
+    "dev:watch": "ts-node-dev --respawn src/index.ts",
+    "build": "tsc -p .",
+    "start": "npm run build && node dist/index.js",
+    "local": "npm run build:live"
   },
   "keywords": [],
   "author": "",
