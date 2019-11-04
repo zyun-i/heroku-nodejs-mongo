@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import path from "path";
-import { Word } from "./models/Word";
 
 import * as homeController from "./controllers/home";
 
