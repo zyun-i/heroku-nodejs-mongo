@@ -18,10 +18,12 @@
     "ts-node-dev": "^1.0.0-pre.43"
   },
   "dependencies": {
+    "@types/express": "^4.17.2",
     "@types/mongodb": "^3.3.8",
     "@types/mongoose": "^5.5.28",
-    "typescript": "^3.6.4",
+    "express": "^4.17.1",
     "mongodb": "^3.3.3",
-    "mongoose": "^5.7.7"
+    "mongoose": "^5.7.7",
+    "typescript": "^3.6.4"
   }
 }
