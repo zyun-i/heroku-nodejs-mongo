@@ -14,13 +14,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/mongodb": "^3.3.8",
-    "@types/mongoose": "^5.5.28",
     "ts-node": "^8.4.1",
-    "ts-node-dev": "^1.0.0-pre.43",
-    "typescript": "^3.6.4"
+    "ts-node-dev": "^1.0.0-pre.43"
   },
   "dependencies": {
+    "@types/mongodb": "^3.3.8",
+    "@types/mongoose": "^5.5.28",
+    "typescript": "^3.6.4",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.7"
   }
