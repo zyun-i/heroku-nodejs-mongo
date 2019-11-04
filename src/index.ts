@@ -1,21 +1,17 @@
 import mongoose from "mongoose";
+import { Word } from "./models/Word";
 
-const mongoUrl = 'mongodb://localhost/test';
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/your-app-name';
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
-const kittySchema = new mongoose.Schema({
-  name: String
-});
+const ore = new Word({emoji: "tada", text: "hey hey hey."});
 
-const Kitten = mongoose.model('Kitten', kittySchema);
-const fluffy = new Kitten({ name: 'fluffy' });
-
-fluffy.save(function (err, fluffy) {
-  if (err) return console.error(err);
-});
-
-Kitten.find(function (err, kittens) {
-  if (err) return console.error(err);
-  console.log(kittens);
+Word.findOne({ text: "hey hey hey." }, (err, existingWord) => {
+  if (err) { console.log(err)  }
+  if (existingWord) {
+    console.log(existingWord);
+  } else {
+    ore.save(err);
+  }
 });
