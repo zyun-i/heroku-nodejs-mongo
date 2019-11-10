@@ -24,7 +24,9 @@ passport.deserializeUser((id, done) => {
 /**
  * Sign in using Email and Password.
  */
-passport.use(new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+passport.use(new LocalStrategy({
+    usernameField: "email"
+}, (email, password, done) => {
   User.findOne({ email: email.toLowerCase() }, (err, user: any) => {
     if (err) { return done(err); }
     if (!user) {
@@ -42,14 +44,17 @@ passport.use(new LocalStrategy({ usernameField: "email" }, (email, password, don
 
 
 passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/auth/google/callback"
-}, (token, tokenSecret, profile, done) => {
-  User.findOne({ google: profile.id }, function (err, user) {
-    return done(err, user);
-  });
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "/auth/google/callback",
+}, (accessToken, refreshToken, profile, cb) => {
+
+    User.findOne({ googleId: profile.id }, function (err, user) {
+        return cb(err, user);
+    });
+
 }));
+
 
 
 /**
